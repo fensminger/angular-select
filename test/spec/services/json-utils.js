@@ -75,13 +75,13 @@ describe('Service: jsonUtils', function () {
         var jsonObject = {
             chaine : "toto"
             , date : curDate.getTime()
-            , otherDt : [curDate.getTime()]
+            , otherDt : [curDate.getTime(), {date : curDate.getTime() , date1 : curDate.getTime()}]
             , date1 : curDate.getTime()
         };
         var jsonObjectToBe = {
             chaine : "toto"
             , date : curDate
-            , otherDt : [curDate]
+            , otherDt : [curDate, {date : curDate , date1 : curDate.getTime()}]
             , date1 : curDate.getTime()
         };
 
