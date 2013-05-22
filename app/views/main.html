@@ -1,9 +1,113 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+    <h4>New native select2 aui-select</h4>
+
+    <p>
+        <select ui-select2 ng-model="resSimple" data-placeholder="-- Select One --" style="width: 200px;">
+            <option></option>
+            <option ng-repeat="thing in awesomeThings" value="{{$index}}">{{thing}}</option>
+        </select>
+        {{resSimple | json}}
+    </p>
+    <p>
+        <select ui-select2 ng-model="res" multiple data-placeholder="-- Select One --" style="width: 200px;">
+            <option ng-repeat="thing in awesomeThings" value="{{$index}}">{{thing}}</option>
+        </select>
+        {{res | json}}
+    </p>
+    <hr/>
+    <p>
+
+    <div class="select2-container ng-valid ng-dirty" id="s2id_autogen1" style="width: 200px;">
+        <a href="javascript:void(0)" onclick="return false;"
+           class="select2-choice" tabindex="-1">
+            <span>AngularJS</span>
+            <abbr class="select2-search-choice-close" style="display: none;"></abbr>
+
+            <div><b></b></div>
+        </a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen2"></div>
+
+    </p>
+
+    <p>
+
+    <div class="select2-container ng-valid ng-dirty select2-dropdown-open select2-container-active" id="s2id_autogen1" style="width: 200px;">
+        <a tabindex="-1"
+           class="select2-choice select2-default"
+           onclick="return false;"
+           href="javascript:void(0)">
+            <span>-- Select One --</span><abbr style="display:none;" class="select2-search-choice-close"></abbr>
+            <div><b></b></div>
+        </a><input type="text" class="select2-focusser select2-offscreen" id="s2id_autogen2" disabled="disabled">
+    </div>
+    <div style="position:relative; width: 200px;" class="select2-drop select2-with-searchbox select2-drop-active" id="select2-drop">
+        <div class="select2-search"><input type="text" class="select2-input" autocomplete="off"></div>
+        <ul class="select2-results">
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding">
+                <div class="select2-result-label"><span class="select2-match"></span>HTML5 Boilerplate</div>
+            </li>
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding">
+                <div class="select2-result-label"><span class="select2-match"></span>AngularJS</div>
+            </li>
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding select2-highlighted">
+                <div class="select2-result-label"><span class="select2-match"></span>Karma</div>
+            </li>
+        </ul>
+    </div>
+    </p>
+
+    <hr/>
+    <p>
+
+    <div class="select2-container select2-container-multi ng-valid ng-dirty" id="s2id_autogen3" style="width: 200px;">
+        <ul class="select2-choices">
+            <li class="select2-search-choice">
+                <div>HTML5 Boilerplates</div>
+                <a href="#" onclick="return false;" class="select2-search-choice-close" tabindex="-1"></a>
+            </li>
+            <li class="select2-search-choice">
+                <div>Coucou</div>
+                <a href="#" onclick="return false;" class="select2-search-choice-close" tabindex="-1"></a>
+            </li>
+            <li class="select2-search-choice">
+                <div>Coucou2ii</div>
+                <a href="#" onclick="return false;" class="select2-search-choice-close" tabindex="-1"></a>
+            </li>
+            <li class="select2-search-field"><input type="text" autocomplete="off" class="select2-input select2-default" id="s2id_autogen4"
+                                                    style="width: 188px;"></li>
+        </ul>
+        <div class="select2-drop select2-drop-multi" style="display:none;">
+            <ul class="select2-results"></ul>
+        </div>
+    </div>
+
+    </p>
+
+    <p>
+
+    <div class="select2-container select2-container-multi ng-valid ng-dirty select2-dropdown-open" id="s2id_autogen3" style="width: 200px;">
+        <ul class="select2-choices">
+            <li class="select2-search-choice">
+                <div>HTML5 Boilerplate</div>
+                <a tabindex="-1" class="select2-search-choice-close" onclick="return false;" href="#"></a></li>
+            <li class="select2-search-field"><input type="text" class="select2-input" autocomplete="off" id="s2id_autogen4" style="width: 187px;"></li>
+        </ul>
+    </div>
+    <div style="position: relative; width: 200px; display: block;" class="select2-drop select2-drop-multi select2-drop-active" id="select2-drop">
+        <ul class="select2-results">
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding">
+                <div class="select2-result-label"><span class="select2-match"></span>HTML5 Boilerplate</div>
+            </li>
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding select2-selected">
+                <div class="select2-result-label"><span class="select2-match"></span>AngularJS</div>
+            </li>
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding select2-highlighted">
+                <div class="select2-result-label"><span class="select2-match"></span>Karma</div>
+            </li>
+        </ul>
+    </div>
+    </p>
+
+    <ul>
+        <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+    </ul>
 </div>

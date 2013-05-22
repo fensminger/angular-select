@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularSelectApp', [])
+angular.module('angularSelectApp', ['ui'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
