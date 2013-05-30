@@ -8,6 +8,6 @@ describe('Directive: auiSelect', function () {
   it('should make hidden element visible', inject(function ($rootScope, $compile) {
     element = angular.element('<aui-select></aui-select>');
     element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the auiSelect directive');
+    expect(element.text()).toBe('');
   }));
 });
