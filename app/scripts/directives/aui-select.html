@@ -1,5 +1,5 @@
 <span>
-    <div class="select2-container" style="width: 200px;" ng-click="openSelect()">
+    <div class="select2-container" style="width: 200px;" ng-click="clickSelect($event)">
         <a tabindex="-1"
            class="select2-choice select2-default"
            onclick="return false;"
@@ -10,10 +10,10 @@
         </a><input type="text" class="select2-focusser select2-offscreen" id="s2id_autogen2" disabled="disabled">
     </div>
     <div style="position:relative; width: 200px; display: none;" class="select2-drop select2-with-searchbox select2-drop-active" id="select2-drop">
-        <div class="select2-search"><input type="text" class="select2-input" autocomplete="off"></div>
+        <div class="select2-search"><input type="text" ng-model="auiInput" ng-change="inputChange($event)" class="select2-input" autocomplete="off"></div>
         <ul class="select2-results">
-            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding" ng-repeat="value in model">
-                <div class="select2-result-label"><span class="select2-match"></span>{{value}}</div>
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding" ng-repeat="value in valueList">
+                <div class="select2-result-label {{value.class}}" id="{{value.id}}" aui-pos="|{{$index}}" ng-mouseenter="mouseEnter($event)" ng-mouseleave="mouseLeave($event)" ng-bind-html-unsafe="value.label | auiShowPattern:auiInput"></div>
             </li>
         </ul>
     </div>
