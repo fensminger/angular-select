@@ -18,7 +18,13 @@
     <hr/>
 
     <p>
-        <div aui-select="myValue" aui-data="valuesList" aui-select-label="'Sélectionner une valeur'">Toto</div>
+        <div aui-select="myValue"
+             aui-data="valuesList"
+             aui-select-label="'Sélectionner une valeur'"
+             aui-select-label-more-result="'Filtrer plus...'"
+             aui-nb-Max-result="'50'"
+             aui-specific-class="'testSelectWidth'"
+             >Loading...</div>
     </p>
     {{myValue | json }}
     <hr/>

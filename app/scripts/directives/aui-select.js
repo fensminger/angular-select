@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularSelectApp')
-  .directive('auiSelect', function() {
+  .directive('auiSelect', function($location, $anchorScroll) {
     return {
       templateUrl: 'scripts/directives/aui-select.html',
         replace: true,
@@ -15,12 +15,23 @@ angular.module('angularSelectApp')
           var selectElt = angular.element(angular.element(element).children()[0]);
           var dropdownElt = angular.element(angular.element(element).children()[1]);
           var inputElt = angular.element(angular.element(angular.element(dropdownElt).children()[0]).children()[0]);
+          var ulDropdownElt = angular.element(angular.element(dropdownElt).children()[1]);
           scope.auiInput = "";
           scope.valueList = [];
           scope.valueListOrig = [];
           scope.isMoreResults = false;
 
-          var nbMaxResult = 50;
+          var nbMaxResult = scope.$eval(attrs['auiNbMaxResult']);
+          if (!angular.isDefined(nbMaxResult) || nbMaxResult==0) {
+              nbMaxResult = scope.model.length;
+          }
+          var customClass = scope.$eval(attrs['auiSpecificClass']);
+          if (angular.isDefined(customClass) && customClass!=null) {
+              selectElt.addClass(customClass);
+              dropdownElt.addClass(customClass);
+          }
+
+          scope.labelMoreResult = scope.$eval(attrs['auiSelectLabelMoreResult']);
           for(var pos= 0, length = scope.model.length; pos < length; pos++) {
               var value = scope.model[pos];
               var displayValue = {
@@ -74,6 +85,10 @@ angular.module('angularSelectApp')
                   scope.eltSelPos = newElt;
                   scope.eltSel = scope.valueList[scope.eltSelPos];
                   scope.eltSel.class = "select2-highlighted";
+                  var target = document.getElementById(scope.eltSel.id);
+                  target.parentNode.scrollTop = target.offsetTop;
+//                  $location.hash(scope.eltSel.label);
+//                  $anchorScroll();
               }
           }
 
@@ -90,12 +105,14 @@ angular.module('angularSelectApp')
                   // Up key
                   if (scope.eltSelPos > 0) {
                       scope.changeEltSel(scope.eltSelPos-1);
+                      ulDropdownElt.scrollTo(angular.element(ulDropdownElt.children()[scope.eltSelPos]));
                       scope.$apply();
                   }
               } else if (event.which == 40) {
                   // Down
                   if (scope.eltSelPos < (scope.valueList.length-1)) {
                       scope.changeEltSel(scope.eltSelPos+1);
+                      ulDropdownElt.scrollTo(angular.element(ulDropdownElt.children()[scope.eltSelPos]));
                       scope.$apply();
                   }
               }
