@@ -22,47 +22,21 @@
              aui-data="valuesList"
              aui-select-label="'Sélectionner une valeur'"
              aui-select-label-more-result="'Filtrer plus...'"
-             aui-nb-Max-result="'50'"
+             aui-nb-Max-result="'100'"
              aui-specific-class="'testSelectWidth'"
              >Loading...</div>
     </p>
     {{myValue | json }}
-    <hr/>
     <p>
-
-    <div class="select2-container ng-valid ng-dirty" id="s2id_autogen1" style="width: 200px;">
-        <a href="javascript:void(0)" onclick="return false;"
-           class="select2-choice" tabindex="-1">
-            <span>AngularJS</span>
-            <div><b></b></div>
-        </a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen2"></div>
-
+    <div aui-multiple-select="myMultipleValue"
+         aui-data="valuesList"
+         aui-select-label="'Sélectionner une valeur'"
+         aui-select-label-more-result="'Filtrer plus...'"
+         aui-nb-Max-result="'50'"
+         aui-specific-class="'testSelectWidth'"
+            >Loading 2...</div>
     </p>
-
-    <p>
-
-    <div class="select2-container ng-valid ng-dirty select2-dropdown-open select2-container-active" id="s2id_autogen1" style="width: 200px;">
-        <a tabindex="-1"
-           class="select2-choice select2-default"
-           onclick="return false;"
-           href="javascript:void(0)">
-            <span>-- Select One --</span>
-            <div><b></b></div>
-        </a><input type="text" class="select2-focusser select2-offscreen" id="s2id_autogen2" disabled="disabled">
-    </div>
-    <div style="position:relative; width: 200px;" class="select2-drop select2-with-searchbox select2-drop-active" id="select2-drop">
-        <div class="select2-search"><input type="text" class="select2-input" autocomplete="off"></div>
-        <ul class="select2-results">
-            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding" ng-repeat="thing in awesomeThings">
-                <div class="select2-result-label"><span class="select2-match"></span>{{thing}}</div>
-            </li>
-            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding select2-highlighted">
-                <div class="select2-result-label"><span class="select2-match"></span>Karma</div>
-            </li>
-        </ul>
-    </div>
-    </p>
-
+    {{myMultipleValue | json }}
     <hr/>
     <p>
 
@@ -114,6 +88,43 @@
         </ul>
     </div>
     </p>
+
+    <p>
+
+    <div class="select2-container ng-valid ng-dirty" id="s2id_autogen1" style="width: 200px;">
+        <a href="javascript:void(0)" onclick="return false;"
+           class="select2-choice" tabindex="-1">
+            <span>AngularJS</span>
+            <div><b></b></div>
+        </a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen2"></div>
+
+    </p>
+
+    <p>
+
+    <div class="select2-container ng-valid ng-dirty select2-dropdown-open select2-container-active" id="s2id_autogen1" style="width: 200px;">
+        <a tabindex="-1"
+           class="select2-choice select2-default"
+           onclick="return false;"
+           href="javascript:void(0)">
+            <span>-- Select One --</span>
+            <div><b></b></div>
+        </a><input type="text" class="select2-focusser select2-offscreen" id="s2id_autogen2" disabled="disabled">
+    </div>
+    <div style="position:relative; width: 200px;" class="select2-drop select2-with-searchbox select2-drop-active" id="select2-drop">
+        <div class="select2-search"><input type="text" class="select2-input" autocomplete="off"></div>
+        <ul class="select2-results">
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding" ng-repeat="thing in awesomeThings">
+                <div class="select2-result-label"><span class="select2-match"></span>{{thing}}</div>
+            </li>
+            <li class="select2-results-dept-0 select2-result select2-result-selectable ng-scope ng-binding select2-highlighted">
+                <div class="select2-result-label"><span class="select2-match"></span>Karma</div>
+            </li>
+        </ul>
+    </div>
+    </p>
+
+    <hr/>
 
     <ul>
         <li ng-repeat="thing in awesomeThings">{{thing}}</li>

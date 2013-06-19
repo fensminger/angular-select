@@ -22,4 +22,6 @@ angular.module('angularSelectApp')
                 j=0;
             }
         }
+        //$scope.myValue = $scope.valuesList[10];
+
     });

@@ -21,6 +21,27 @@ angular.module('angularSelectApp')
           scope.valueListOrig = [];
           scope.isMoreResults = false;
 
+          scope.changeEltSel = function(newEltStr) {
+              var newElt;
+              if (angular.isString(newEltStr) && newEltStr.lastIndexOf("|")>=0) {
+                  newElt = parseInt(newEltStr.substring(newEltStr.lastIndexOf("|")+1));
+              } else {
+                  newElt = newEltStr;
+              }
+              if (scope.eltSelPos!=null) {
+                  scope.eltSel.class = "";
+              }
+              if (scope.valueList.length>0) {
+                  scope.eltSelPos = newElt;
+                  scope.eltSel = scope.valueList[scope.eltSelPos];
+                  scope.eltSel.class = "select2-highlighted";
+//                  var target = document.getElementById(scope.eltSel.id);
+//                  target.parentNode.scrollTop = target.offsetTop;
+//                  $location.hash(scope.eltSel.label);
+//                  $anchorScroll();
+              }
+          }
+
           var nbMaxResult = scope.$eval(attrs['auiNbMaxResult']);
           if (!angular.isDefined(nbMaxResult) || nbMaxResult==0) {
               nbMaxResult = scope.model.length;
@@ -31,6 +52,9 @@ angular.module('angularSelectApp')
               dropdownElt.addClass(customClass);
           }
 
+          scope.auiSelectLabel = scope.auiSelectLabelOrig;
+          scope.eltSelPos = null;
+          scope.eltSel = null;
           scope.labelMoreResult = scope.$eval(attrs['auiSelectLabelMoreResult']);
           for(var pos= 0, length = scope.model.length; pos < length; pos++) {
               var value = scope.model[pos];
@@ -44,11 +68,16 @@ angular.module('angularSelectApp')
               } else {
                   scope.isMoreResults = true;
               }
+              if (angular.isDefined(scope.auiSelect) && scope.auiSelect != null) {
+                  if (displayValue.id == scope.auiSelect.id) {
+                      scope.auiSelectLabel = scope.auiSelect.label;
+                      scope.eltSelPos = pos;
+                      scope.eltSel = displayValue;
+                      scope.changeEltSel(scope.eltSelPos);
+                  }
+              }
               scope.valueListOrig.push(displayValue);
           }
-          scope.auiSelectLabel = scope.auiSelectLabelOrig;
-          scope.eltSelPos = null;
-          scope.eltSel = null;
 
 
           scope.filterSearch = function (p) {
@@ -70,27 +99,6 @@ angular.module('angularSelectApp')
               }
               return resList;
           };
-
-          scope.changeEltSel = function(newEltStr) {
-              var newElt;
-              if (angular.isString(newEltStr) && newEltStr.lastIndexOf("|")>=0) {
-                  newElt = parseInt(newEltStr.substring(newEltStr.lastIndexOf("|")+1));
-              } else {
-                  newElt = newEltStr;
-              }
-              if (scope.eltSelPos!=null) {
-                  scope.eltSel.class = "";
-              }
-              if (scope.valueList.length>0) {
-                  scope.eltSelPos = newElt;
-                  scope.eltSel = scope.valueList[scope.eltSelPos];
-                  scope.eltSel.class = "select2-highlighted";
-                  var target = document.getElementById(scope.eltSel.id);
-                  target.parentNode.scrollTop = target.offsetTop;
-//                  $location.hash(scope.eltSel.label);
-//                  $anchorScroll();
-              }
-          }
 
           element.bind("keydown", function(event) {
               if (event.which == 27) {
@@ -154,6 +162,7 @@ angular.module('angularSelectApp')
 
               inputElt.focus();
               scope.changeEltSel(0);
+              //ulDropdownElt.scrollTo(angular.element(ulDropdownElt.children()[scope.eltSelPos]));
           }
 
           scope.mouseEnter = function(event) {
